@@ -1,0 +1,90 @@
+%Sprache
+\usepackage[ngerman]{babel}
+\setkomafont{disposition}{\normalcolor \bfseries}
+\usepackage[autostyle=true,german=quotes]{csquotes}
+
+%Schrift
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+%Mathepakete
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm} %Mehr Optionen für \newtheorem wir Stile, und proof Umgebung
+%\usepackage{siunitx}  
+%\sisetup{locale = DE} 
+%\sisetup{separate-uncertainty=true}
+
+%Paket für Hyperlinks
+\usepackage{hyperref}
+
+%Einbindung von Bildern
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{wrapfig}
+\addto\captionsngerman{\renewcommand{\figurename}{Abb.}}
+%richtige Angabe von Quellen
+\usepackage[backend=biber, sorting=none]{biblatex} 
+\addbibresource{Einstellungen/Quellen.bib}
+%Neudefinitionen
+\usepackage{layouts} %ermittelt die Dimensionen der aktuellen Seiten
+\newcommand{\druckegroesse}{
+    Breite: \printinunitsof{cm}\prntlen{\textwidth}\\
+    Höhe: \printinunitsof{cm}\prntlen{\textheight}
+}
+
+%Mathematik: Sätze, Lemmate, Definitionen, Bemerkungen, Beispiele ...
+\newtheoremstyle{nsatz} % Name
+  {0pt}             % Space above
+  {\topsep}             % Space below
+  {\itshape}                    % Body font
+  {\parindent}                    % Indent amount
+  {\bfseries}           % Head font
+  {:}                   % Punctuation after head
+  {\newline}            % Space after head  
+  {}                    % Head spec
+\theoremstyle{nsatz}
+\newtheorem{satz}{Satz}[section]
+\newtheorem{korollar}{Korollar}[satz]
+\newtheorem{lemma}[satz]{Lemma}
+\newtheorem{beispiel}[satz]{Beispiel}
+\newtheorem{beispiele}[satz]{Beispiele}
+\newtheorem{defusatz}[satz]{Definition und Satz}
+
+
+\newtheoremstyle{ndefinition} % Name
+  {0pt}             % Space above
+  {\topsep}             % Space below
+  {}                    % Body font
+  {\parindent}                    % Indent amount
+  {\bfseries}           % Head font
+  {:}                   % Punctuation after head
+  {\newline}            % Space after head  
+  {}                    % Head spec
+\theoremstyle{ndefinition}
+\newtheorem{definition}[satz]{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{bemerkung}{Bemerkung}
+
+%Mathematik: Beweise
+\renewcommand\qedsymbol{}
+\newenvironment{beweis}
+  {\begin{proof}}
+  {\par\noindent\makebox[\linewidth]{q.e.d.}\end{proof}}
+
+%Vereinfachte Einbindung der Vorlesungen
+%Die Vorlesungen müssen in einem Ordner "Vorlesungen" liegen, und müssen "Vorlesung01.tex", "Vorlesung02.tex", ... heißen. Dann können sie mit \vorlesungen{1}{10} eingebunden werden.
+\usepackage{pgffor}%
+\newcommand{\vorlesungen}[2]{
+	\foreach \c in {#1,...,#2}{
+		\ifnum\c<10
+			\edef\nummer{0\c}
+		\else
+			\edef\nummer{\c}
+		\fi
+		\IfFileExists{Vorlesungen/Vorlesung\nummer.tex}{
+			\input{Vorlesungen/Vorlesung\nummer.tex}
+		}{}%
+	}%
+}

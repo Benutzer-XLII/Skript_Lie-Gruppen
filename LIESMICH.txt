@@ -1,0 +1,27 @@
+Der Sinn und Zweck dieses Projektes ist es ein deutschsprachiges Skript zur Vorlesung "Lie-groups" zu erstellen.
+Beiträge in anderen Sprachen (inklusive Englisch) sind daher nicht gestattet.
+
+Mathematische Konventionen:
+-- Die natürlichen Zahlen enthalten die Null
+
+Namenkonventionen:
+-- Vorläufig "[Typ]:[Vorlesung]:Name".
+   Beispiel1: "Satz:2:Cauchyprodukt", für den Satz über das Cauchyprodukt, welches in der zweiten Vorlesung besprochen wurde.
+   Beispiel2: "Abb:7:Baum", für das Bild eine Baumes, welches in Vorlesung 7 vorkam usw.
+   
+   Folgende Typenkürzel werden verwendet:
+   Abb - Abbildung
+   Beh - Behauptung
+   Bsp - Beispiel
+   Kor - Korollar
+   Lem - Lemma
+   Prop - Proposition
+   Satz - Satz
+
+   (Das ist zumindest der Plan)
+   
+
+Weiteres:
+-- Um Formeln in Latex zu erzeugen, sind, wann immer möglich nur "\( "\)" oder "\[" "\]" zu verwenden,
+    da aus dem Skript zusätzlich Anki-Karten erstellt werden sollen, und Anki nur mit diesen Begrenzungen zurecht kommt.
+    (Wenn nicht anders möglich, zB. weil eine Formel beschriftet werden soll, ist auch \begin{equation} bzw. \end{equation} erlaubt.)
